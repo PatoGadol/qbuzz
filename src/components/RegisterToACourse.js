@@ -16,7 +16,7 @@ class RegisterToACourse extends Component {
                 <Link to={"/" + course.courseName}
                       key={course.id}
                       data-tip="Try this course today!">
-                    {course.courseName}
+                    -{course.courseName};
                 </Link>
             )
 
@@ -30,7 +30,7 @@ class RegisterToACourse extends Component {
 
         return (
             <div>
-                <header>Welcome to course portal, choose a course</header>
+                <h1>Welcome to course portal, choose a course</h1>
                 <Router>
                     <div>
                         {links}
