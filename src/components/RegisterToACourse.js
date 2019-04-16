@@ -72,16 +72,21 @@ class RegisterToACourse extends Component {
                 <h1>Welcome to course portal, choose a course</h1>
                 <Router>
                     <div>
-                        <Link to={"/"}>
-                            Home
-                        </Link>
-                        <br/>
                         {links}
+
                         <Switch>
                             <Route exact path={"/"}/>
                             {routes}
                             {subscribeRoutes}
                         </Switch>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <footer>
+                            <Link to={"/"}>
+                                Home
+                            </Link>
+                        </footer>
                     </div>
                 </Router>
             </div>

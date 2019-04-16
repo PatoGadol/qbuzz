@@ -24,8 +24,8 @@ function SubscribersDetailsComponent(props) {
                 <br/>
                 <button className="Button" disabled={props.disableButton()} onClick={() => props.onSubmit(props.courseName, props.courses)}>Submit Form</button>
                 <br/>
-                <div style={{borderStyle: "solid"}}>
-                    <h1 style = {{color:"red"}}>Entered information, please verify: </h1>
+                <div className="form" style={{borderStyle: "solid"}}>
+                    <h3 style = {{color:"green"}}>Entered information, please verify: </h3>
                     <p style={{display: props.data.firstName && props.data.lastName ? "block" : "none"}}>
                         Hi {props.data.firstName} {props.data.lastName}</p>
                     <p style={{display: props.data.address && props.data.city ? "block" : "none"}}>
