@@ -21,7 +21,7 @@ function SubscribersDetailsComponent(props) {
                 </select>
                 <br/>
                 <br/>
-                <button disabled={props.disableButton()} onClick={() => alert("Form submitted!")}>Submit Form</button>
+                <button disabled={props.disableButton()} onClick={() => props.onSubmit(props.courseName, props.courses)}>Submit Form</button>
                 <br/>
                 <div style={{borderStyle: "solid"}}>
                     <h1>Entered information, please verify: </h1>

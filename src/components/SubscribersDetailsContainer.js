@@ -1,15 +1,16 @@
 import React, {Component} from "react"
 import SubscribersDetailsComponent from "./SubscribersDetailsComponent"
+import CourseFormContainer from "./CourseFormContainer";
 
 class SubscribersDetailsContainer extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             firstName: "",
             lastName: "",
             address: "",
             city: "",
-            paymentMethod: "",
+            paymentMethod: ""
         }
         this.handleChange = this.handleChange.bind(this)
         this.disableButton = this.disableButton.bind(this)
@@ -21,20 +22,23 @@ class SubscribersDetailsContainer extends Component {
     }
 
     disableButton() {
-        return  !(this.state.firstName
-                && this.state.lastName
-                && this.state.address
-                && this.state.city
-                && this.state.paymentMethod)
+        return !(this.state.firstName
+            && this.state.lastName
+            && this.state.address
+            && this.state.city
+            && this.state.paymentMethod)
 
     }
 
     render() {
         return (
             <SubscribersDetailsComponent
-                disableButton = {this.disableButton}
+                disableButton={this.disableButton}
                 handleChange={this.handleChange}
-                data={this.state}/>
+                data={this.state}
+                courseName={this.props.courseName}
+                onSubmit={this.props.onSubmit}
+                courses={this.props.courses}/>
         )
     }
 }

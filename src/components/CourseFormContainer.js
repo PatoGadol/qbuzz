@@ -5,23 +5,26 @@ import { Redirect } from 'react-router'
 class CourseFormContainer extends Component {
     constructor(props) {
         super(props)
-        this.state = {redirect:false}
+        this.state = {
+            redirect:false
+        }
         this.onSubscribe = this.onSubscribe.bind(this)
         this.path = "/subscribe/" + props.course.courseName
-        /* this.handleChange = this.handleChange.bind(this)
-         this.disableButton = this.disableButton.bind(this)*/
     }
 
         onSubscribe(event) {
-            this.setState({redirect: true});
-            // const {name, value} = event.target
-            // this.setState({[name]: value})
+            this.setState({redirect: true})
         }
 
-
     render() {
-        if (this.state.redirect)
-            return <Redirect push to={this.path}/>
+        if (this.state.redirect) {
+            this.setState({redirect: false})
+            return <Redirect to={this.path}
+                             course={this.props.course}
+                             onSubmit={this.props.onSubmit}
+                             courses={this.props.courses}
+            />
+        }
         return (
             <CourseFormComponent
                 course={this.props.course}

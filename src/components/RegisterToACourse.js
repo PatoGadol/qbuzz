@@ -1,18 +1,33 @@
 import React, {Component} from "react"
 import coursesData from "./coursesData"
 import CourseFormContainer from "./CourseFormContainer";
-import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import SubscribersDetailsContainer from "./SubscribersDetailsContainer";
 
 class RegisterToACourse extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            courses: coursesData
+        }
+        this.onSubmit = this.onSubmit.bind(this)
+    }
+
+    onSubmit(courseName, prevCourses) {
+        /*debugger;
+        var coursesTemp = prevCourses
+
+        this.setState({
+                courses: prevCourses.map(course => {
+
+                })
+            }
+        )*/
     }
 
     render() {
 
-        const links = coursesData
+        const links = this.state.courses
             .map(course =>
                 <Link to={"/" + course.courseName}
                       key={course.id}
@@ -21,30 +36,46 @@ class RegisterToACourse extends Component {
                 </Link>
             )
 
-        const routes = coursesData.map(course =>
+        const routes = this.state.courses.map(course =>
             <Route path={"/" + course.courseName}
                    key={course.id}
-                   render={() => <CourseFormContainer course={course}/>}
-            />
-
-        )
-
-        const subscribeRoutes = coursesData.map(course =>
-            <Route path={"/subscribe/" + course.courseName}
-                   key={course.id}
-                   render={() => <SubscribersDetailsContainer course={course}/>}
+                   render={() => <CourseFormContainer
+                       course={course}
+                       onSubmit={this.onSubmit}
+                       courses={this.state.courses}/>}
             />
         )
 
+        const subscribeRoutes = this.state.courses.map(course =>
+                <Route path={"/subscribe/" + course.courseName}
+                       key={course.id}
+                       render={() => <SubscribersDetailsContainer
+                           courseName={course.courseName}
+                           onSubmit={this.onSubmit}
+                           courses={this.state.courses}
+                       />}
+                       d/>
+            /* <SubscribersDetailsContainer
+                 courseName={course.courseName}
+                 onSubmit={this.onSubmit}
+             />*/
+        )
 
         return (
             <div>
                 <h1>Welcome to course portal, choose a course</h1>
                 <Router>
                     <div>
+                        <Link to={"/"}>
+                            Home
+                        </Link>
+                        <br/>
                         {links}
-                        {routes}
-                        {subscribeRoutes}
+                        <Switch>
+                            <Route exact path={"/"}/>
+                            {routes}
+                            {subscribeRoutes}
+                        </Switch>
                     </div>
                 </Router>
             </div>
