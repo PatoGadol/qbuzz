@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import coursesData from "./coursesData"
 import CourseFormContainer from "./CourseFormContainer";
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+import SubscribersDetailsContainer from "./SubscribersDetailsContainer";
 
 class RegisterToACourse extends Component {
     constructor(props) {
@@ -25,6 +26,14 @@ class RegisterToACourse extends Component {
                    key={course.id}
                    render={() => <CourseFormContainer course={course}/>}
             />
+
+        )
+
+        const subscribeRoutes = coursesData.map(course =>
+            <Route path={"/subscribe/" + course.courseName}
+                   key={course.id}
+                   render={() => <SubscribersDetailsContainer course={course}/>}
+            />
         )
 
 
@@ -35,6 +44,7 @@ class RegisterToACourse extends Component {
                     <div>
                         {links}
                         {routes}
+                        {subscribeRoutes}
                     </div>
                 </Router>
             </div>
