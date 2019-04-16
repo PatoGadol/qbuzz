@@ -1,6 +1,5 @@
 import React, {Component} from "react"
 import SubscribersDetailsComponent from "./SubscribersDetailsComponent"
-import CourseFormContainer from "./CourseFormContainer";
 
 class SubscribersDetailsContainer extends Component {
     constructor(props) {

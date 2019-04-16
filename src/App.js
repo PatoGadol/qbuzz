@@ -1,12 +1,12 @@
 import React from "react"
-import ReactDom from "react-dom"
 import RegisterToACourse from "./components/RegisterToACourse"
+import "./styles.css"
 
 function App() {
 
     return (
-        <div>
-            <RegisterToACourse/>
+        <div >
+            <RegisterToACourse className="App"/>
         </div>
     )
 }

@@ -1,8 +1,9 @@
 import React, {Component} from "react"
 import coursesData from "./coursesData"
-import CourseFormContainer from "./CourseFormContainer";
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
-import SubscribersDetailsContainer from "./SubscribersDetailsContainer";
+import CourseFormContainer from "./CourseFormContainer"
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom"
+import SubscribersDetailsContainer from "./SubscribersDetailsContainer"
+
 
 class RegisterToACourse extends Component {
     constructor(props) {
@@ -17,12 +18,12 @@ class RegisterToACourse extends Component {
         debugger;
 
         const coursesTemp = prevCourses.map(course => {
-            if(course.courseName !== courseName)
+            if (course.courseName !== courseName)
                 return course;
 
             return {
                 ...course,
-                numberOfParticipants : course.numberOfParticipants + 1
+                numberOfParticipants: course.numberOfParticipants + 1
             };
         });
 
@@ -34,10 +35,10 @@ class RegisterToACourse extends Component {
 
         const links = this.state.courses
             .map(course =>
-                <Link to={"/" + course.courseName}
+                <Link className="font-weight-bold" to={"/" + course.courseName}
                       key={course.id}
                       data-tip="Try this course today!">
-                    -{course.courseName};
+                    {course.courseName};
                 </Link>
             )
 
@@ -59,7 +60,7 @@ class RegisterToACourse extends Component {
                            onSubmit={this.onSubmit}
                            courses={this.state.courses}
                        />}
-                       d/>
+                />
             /* <SubscribersDetailsContainer
                  courseName={course.courseName}
                  onSubmit={this.onSubmit}

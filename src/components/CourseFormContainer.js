@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import CourseFormComponent from "./CourseFormComponent"
 import { Redirect } from 'react-router'
+import '../styles.css'
 
 class CourseFormContainer extends Component {
     constructor(props) {

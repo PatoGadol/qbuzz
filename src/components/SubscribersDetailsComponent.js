@@ -1,4 +1,5 @@
 import React from "react"
+import "../styles.css"
 
 function SubscribersDetailsComponent(props) {
     return (
@@ -21,10 +22,10 @@ function SubscribersDetailsComponent(props) {
                 </select>
                 <br/>
                 <br/>
-                <button disabled={props.disableButton()} onClick={() => props.onSubmit(props.courseName, props.courses)}>Submit Form</button>
+                <button className="Button" disabled={props.disableButton()} onClick={() => props.onSubmit(props.courseName, props.courses)}>Submit Form</button>
                 <br/>
                 <div style={{borderStyle: "solid"}}>
-                    <h1>Entered information, please verify: </h1>
+                    <h1 style = {{color:"red"}}>Entered information, please verify: </h1>
                     <p style={{display: props.data.firstName && props.data.lastName ? "block" : "none"}}>
                         Hi {props.data.firstName} {props.data.lastName}</p>
                     <p style={{display: props.data.address && props.data.city ? "block" : "none"}}>
