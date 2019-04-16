@@ -14,15 +14,20 @@ class RegisterToACourse extends Component {
     }
 
     onSubmit(courseName, prevCourses) {
-        /*debugger;
-        var coursesTemp = prevCourses
+        debugger;
 
-        this.setState({
-                courses: prevCourses.map(course => {
+        const coursesTemp = prevCourses.map(course => {
+            if(course.courseName !== courseName)
+                return course;
 
-                })
-            }
-        )*/
+            return {
+                ...course,
+                numberOfParticipants : course.numberOfParticipants + 1
+            };
+        });
+
+        this.setState({courses: coursesTemp})
+        console.log(this.state.courses)
     }
 
     render() {
