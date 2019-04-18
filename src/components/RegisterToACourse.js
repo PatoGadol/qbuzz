@@ -14,20 +14,22 @@ class RegisterToACourse extends Component {
         this.onSubmit = this.onSubmit.bind(this)
     }
 
-    onSubmit(courseName, prevCourses) {
+    onSubmit(courseName) {
         debugger;
 
-        const coursesTemp = prevCourses.map(course => {
-            if (course.courseName !== courseName)
-                return course;
-
+        this.setState(prevState => {
             return {
-                ...course,
-                numberOfParticipants: course.numberOfParticipants + 1
-            };
-        });
+                courses: prevState.courses.map(course => {
+                    if (course.courseName !== courseName)
+                        return course;
 
-        this.setState({courses: coursesTemp})
+                    return {
+                        ...course,
+                        numberOfParticipants: course.numberOfParticipants + 1
+                    };
+                })
+            }
+        })
         console.log(this.state.courses)
     }
 
@@ -48,23 +50,19 @@ class RegisterToACourse extends Component {
                    render={() => <CourseFormContainer
                        course={course}
                        onSubmit={this.onSubmit}
-                       courses={this.state.courses}/>}
+                   />}
             />
         )
 
         const subscribeRoutes = this.state.courses.map(course =>
-                <Route path={"/subscribe/" + course.courseName}
-                       key={course.id}
-                       render={() => <SubscribersDetailsContainer
-                           courseName={course.courseName}
-                           onSubmit={this.onSubmit}
-                           courses={this.state.courses}
-                       />}
-                />
-            /* <SubscribersDetailsContainer
-                 courseName={course.courseName}
-                 onSubmit={this.onSubmit}
-             />*/
+            <Route path={"/subscribe/" + course.courseName}
+                   key={course.id}
+                   render={() => <SubscribersDetailsContainer
+                       courseName={course.courseName}
+                       onSubmit={this.onSubmit}
+                       courses={this.state.courses}
+                   />}
+            />
         )
 
         return (
@@ -73,7 +71,6 @@ class RegisterToACourse extends Component {
                 <Router>
                     <div>
                         {links}
-
                         <Switch>
                             <Route exact path={"/"}/>
                             {routes}

@@ -1,4 +1,5 @@
 import React from "react"
+import Popup from 'reactjs-popup'
 
 function CourseFormComponent(props) {
 
@@ -11,7 +12,9 @@ function CourseFormComponent(props) {
                 <h3>{props.course.courseName} <label style={{fontWeight: "lighter"}}>course details:</label></h3>
                 <p>Number of study days: {props.course.amountOfDays}</p>
                 <p>The course will take place on: {props.course.courseTimeSchedule}</p>
-                <p>Teacher: {props.course.teacher}</p>
+                <p>Teacher:
+                    <label position="right top" on="hover">{props.course.teacher}</label>
+                </p>
                 <p>Price: {props.course.price}$</p>
                 <p>Course description: {props.course.descriptionOfTheCourse}</p>
                 <p>Min. participants: {props.course.minimumParticipants}</p>
@@ -24,3 +27,13 @@ function CourseFormComponent(props) {
 }
 
 export default CourseFormComponent
+/*
+<Popup
+
+trigger={<button className="button"> Right Top </button>}
+position="right top"
+on="hover"
+    >
+    <Card title="Right Top" />
+    </Popup
+*/

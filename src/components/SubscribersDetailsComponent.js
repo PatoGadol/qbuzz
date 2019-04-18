@@ -22,7 +22,7 @@ function SubscribersDetailsComponent(props) {
                 </select>
                 <br/>
                 <br/>
-                <button className="Button" disabled={props.disableButton()} onClick={() => props.onSubmit(props.courseName, props.courses)}>Submit Form</button>
+                <button className="Button" disabled={props.disableButton()} onClick={() => props.onSubmit(props.courseName)}>Submit Form</button>
                 <br/>
                 <div className="form" style={{borderStyle: "solid"}}>
                     <h3 style = {{color:"green"}}>Entered information, please verify: </h3>

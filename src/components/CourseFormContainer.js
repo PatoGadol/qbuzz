@@ -1,21 +1,21 @@
 import React, {Component} from "react"
 import CourseFormComponent from "./CourseFormComponent"
-import { Redirect } from 'react-router'
+import {Redirect} from 'react-router'
 import '../styles.css'
 
 class CourseFormContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            redirect:false
+            redirect: false
         }
         this.onSubscribe = this.onSubscribe.bind(this)
         this.path = "/subscribe/" + props.course.courseName
     }
 
-        onSubscribe(event) {
-            this.setState({redirect: true})
-        }
+    onSubscribe(event) {
+        this.setState({redirect: true})
+    }
 
     render() {
         if (this.state.redirect) {
@@ -23,7 +23,6 @@ class CourseFormContainer extends Component {
             return <Redirect to={this.path}
                              course={this.props.course}
                              onSubmit={this.props.onSubmit}
-                             courses={this.props.courses}
             />
         }
         return (
