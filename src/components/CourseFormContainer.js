@@ -13,7 +13,7 @@ class CourseFormContainer extends Component {
         this.path = "/subscribe/" + props.course.courseName
     }
 
-    onSubscribe(event) {
+    onSubscribe() {
         this.setState({redirect: true})
     }
 

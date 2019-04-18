@@ -26,13 +26,3 @@ function CourseFormComponent(props) {
 }
 
 export default CourseFormComponent
-/*
-<Popup
-
-trigger={<button className="button"> Right Top </button>}
-position="right top"
-on="hover"
-    >
-    <Card title="Right Top" />
-    </Popup
-*/
